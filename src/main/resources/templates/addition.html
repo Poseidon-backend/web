@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Addition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<h1 th:text="${addition}">Addition</h1>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <a class="logo" href="#">
+                <img src="images/logo.svg" alt="Calculator">
+            </a>
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__item">
+                        <a class="menu__link" th:href="@{/addition}">Addition</a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" th:href="@{/subtraction}">Subtraction</a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="#">Next weekend</a>
+                    </li>
+                </ul>
+            </nav>
+            <ul class="user-actions">
+                <li class="user-action__item">
+                    <a class="user-action__link" href="#">
+                        <img src="images/history.svg" alt="">
+                    </a>
+                </li>
+                <li class="user-action__item">
+                    <a class="user-action__link" href="#">
+                        <img src="images/user.svg" alt="">
+                    </a>
+                </li>
+                <li class="user-action__item user-action__item-search">
+                    <a class="user-action__link" href="#">
+                        <img src="images/search.svg" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <section class="addition">
+        <div class="container">
+            <div class="addition__inner">
+                <h1 class="addition__title">Add Two Dates</h1>
+                <form class="addition__form" action="#" th:action="@{/addition/result}" method="post">
+                    <div class="addition__form-group">
+                        <label for="date1">Date 1:</label>
+                        <input type="date" id="date1" name="date1" required>
+                    </div>
+                    <div class="addition__form-group">
+                        <label for="date2">Date 2:</label>
+                        <input type="date" id="date2" name="date2" required>
+                    </div>
+                    <button type="submit" class="button">Calculate</button>
+                </form>
+                <div class="addition__result" th:if="${result != null}" th:text="${'Result: ' + result}">
+                    Result:
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+</footer>
+</body>
+</html>
