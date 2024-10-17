@@ -2,10 +2,7 @@ package com.proger4.webproger4.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -91,9 +88,4 @@ public class DateCalculator {
         }
     }
 
-    @ExceptionHandler(value = {RuntimeException.class, IllegalArgumentException.class})
-    public ResponseEntity<String> handleException(Exception ex) {
-        log.error("Error occurred: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
-    }
 }
